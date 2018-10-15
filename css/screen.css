@@ -674,15 +674,46 @@ more padding on the right to avoid overlap
     font-size: 14px;
     line-height: 16px;
     color: var(--color-neutral-x-dark);
+
+
 }
 
+.c-label--floating {
+    position: absolute;
+    top: 12px;
+    left: 8px;
+    padding: 4px 8px;
+    will-change: transform;
+    transform: translateY( 0 );
+    transition: transform 200ms ease-in-out;
+    box-shadow: 0 0 4px 4px rgba(255,255,255,0.8);
+    background: white;
+}
+
+.c-input:focus + .c-label--floating{
+    transform: translateY(-24px);
+
+}
+
+
+.is-floating{
+    transform: translateY( -24px ); 
+}
+
+
 /*
-    Component: Dropdown Button
-    ---
-    Class to put on form buttons or
+    Component: range 
 */
 
+.c-range{
+    display: block;
 
+    height: 8px;
+
+    padding: 0;
+
+    border-radius: 8px;
+}
 
 /*
     Component: Button
@@ -960,10 +991,157 @@ more padding on the right to avoid overlap
 }
 
 /*
-Component: Password Toggle
----
-Password toggle custom checkbox
+    Component: Password Toggle
+    ---
+    Password toggle custom checkbox
 */
+
+.c-password-toggle-container {
+    position: relative;
+    display: block;
+}
+
+.c-password-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.c-password-toggle__label {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    -ms-align-items: center;
+    align-items: center;
+    padding: 14px 16px;
+}
+
+.c-password-toggle__symbol {
+    display: block;
+    width: 20px;
+    height: 20px;
+    fill: var(--color-neutral-x-light);
+}
+
+.c-password-toggle__symbol--hide {
+    display: none;
+}
+
+.c-password-toggle__checkbox:checked + .c-password-toggle__label .c-password-toggle__symbol--hide {
+    display: block;
+}
+
+.c-password-toggle__checkbox:checked + .c-password-toggle__label .c-password-toggle__symbol--show {
+    display: none;
+}
+
+
+/*
+    Component: Slider
+    ---
+    Class to put on form buttons or
+*/
+.c-range {
+    display: block;
+    height: 8px;
+    padding: 0;
+    border-radius: 8px;
+    background-color: var(--color-neutral-xxxx-light);
+    border: 1px solid var(--color-neutral-xxx-light);
+}
+
+.c-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 8px;
+    background: var(--color-alpha);
+}
+
+.c-range-holder {
+    width: 20px;
+    margin-top: 10px;
+    text-align: center;
+    display: block;
+}
+
+.c-range-holder::after {
+    content: attr(data-value);
+    display: inline-block;
+    width: 32px;
+    margin-top: 12px;
+    padding: 4px;
+    font-size: .8rem;
+    text-align: center;
+    border-radius: 4px;
+    background: var(--color-neutral-xxxx-light);
+    transform: scale(1);
+    transition: transform 200ms ease-in-out;
+    transform-origin: center top;
+}
+
+
+
+/*
+	Component: Custom Dropdon Button
+	---
+	Custom Dropdown button
+*/
+
+
+/*
+	Component: Dropdown Button
+	---
+*/
+.c-dropdown-container {
+    position: relative;
+}
+
+.c-dropdown-button {
+    display: inline-flex;
+    border: 1px solid var(--color-neutral-x-light);
+    padding: 7px;
+    justify-content: center;
+    align-items: center;
+    line-height: 24px;
+    background-color: var(--color-neutral-xxxx-light);
+    box-shadow: var(--inset-shadow);
+}
+
+.c-dropdown-button:active, .c-dropdown-button:focus {
+    box-shadow: var(--focus-shadow);
+}
+
+.c-button-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    fill: var(--color-neutral)
+}
+
+.c-button-icon--rotate {
+    transform: scale(-1);
+}
+
+.c-dropdown-buttons {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 40px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 500ms ease-in-out;
+}
+
+.c-dropdown-buttons--visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
 
 
 /*
@@ -971,6 +1149,27 @@ Password toggle custom checkbox
 	---
 	Custom like button
 */
+.c-like-container {
+    margin-top: 48px;
+}
+
+.c-like__label {
+    height: 24px;
+    width: 24px;
+}
+
+.c-like__icon {
+    fill: var(--color-neutral-x-light);
+    transition: transform 250ms ease-in-out;
+}
+
+.c-like__input:active+.c-like__label .c-like__icon {
+    transform: scale(0.90)
+}
+
+.c-like__input:checked+.c-like__label .c-like__icon {
+    fill: #D80027;
+}
 
 
 /*------------------------------------*\
@@ -1273,6 +1472,8 @@ Password toggle custom checkbox
         width: 83.3333333333% !important;
     }
 }
+
+
 
 /*------------------------------------*\
 #MEDIA
